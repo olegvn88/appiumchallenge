@@ -14,6 +14,5 @@ public class GivenStepDefinitions {
     @Given("user is logged to application as admin user")
     public void userIsLoggedToApplicationAsAdminUser() {
         testContext.setSamplesListPage(new LoginPage().login());
-        System.out.println("application is started");
     }
 }
