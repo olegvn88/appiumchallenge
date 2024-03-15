@@ -1,19 +1,17 @@
 package com.olnester.pages;
 
-import static com.codeborne.selenide.DragAndDropOptions.DragAndDropMethod.ACTIONS;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.webdriver;
-
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.DragAndDropOptions;
 import com.codeborne.selenide.SelenideElement;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.NoSuchContextException;
 import io.appium.java_client.remote.SupportsContextSwitching;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import static com.codeborne.selenide.DragAndDropOptions.DragAndDropMethod.ACTIONS;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.webdriver;
 
 public class BasePage {
     private final SelenideElement backButton = $(AppiumBy.id("menu_profile"));
@@ -27,12 +25,8 @@ public class BasePage {
     }
 
     protected static void scrollAndClick(String text) {
-        $(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"" + text + "\").instance(0))"))
-                .click();
-    }
-
-    protected void swipeVertical(String textOfElement) {
-        $(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"" + textOfElement + "\"))"))
+        String uiAutomatorText = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"" + text + "\").instance(0))";
+        $(AppiumBy.androidUIAutomator(uiAutomatorText))
                 .click();
     }
 
@@ -58,14 +52,15 @@ public class BasePage {
 
     protected void changeContext(String newContext) {
         String context = ((SupportsContextSwitching) driver).getContextHandles().stream()
-                .filter(con -> con.contains(newContext)).findFirst()
-                .orElseThrow(() -> new NoSuchContextException("Context not found"));
+                                                            .filter(con -> con.contains(newContext)).findFirst()
+                                                            .orElseThrow(() -> new NoSuchContextException("Context not found"));
         ((SupportsContextSwitching) driver).context(context);
         String context1 = ((SupportsContextSwitching) driver).getContext();
         System.out.println("The current context is " + context1);
     }
 
     protected static void swipeHorizontal(String textToSearch) {
-        $(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).setAsHorizontalList().scrollBackward(5).setMaxSearchSwipes(1).scrollIntoView(new UiSelector().text(\"" + textToSearch + "\"))")).click();
+        String uiAutomatorText = "new UiScrollable(new UiSelector().scrollable(true).instance(0)).setAsHorizontalList().scrollBackward(5).setMaxSearchSwipes(1).scrollIntoView(new UiSelector().text(\"" + textToSearch + "\"))";
+        $(AppiumBy.androidUIAutomator(uiAutomatorText)).click();
     }
 }
