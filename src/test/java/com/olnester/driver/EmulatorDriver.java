@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class EmulatorDriver implements WebDriverProvider {
     protected static AndroidDriver driver;
@@ -38,7 +38,7 @@ public class EmulatorDriver implements WebDriverProvider {
 
     private String getAbsolutePath(String filePath) {
         File file = new File(filePath);
-        assertTrue(file.exists(), filePath + " not found");
+        assertThat(file.exists()).withFailMessage(() -> filePath + " not found").isTrue();
 
         return file.getAbsolutePath();
     }

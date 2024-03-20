@@ -18,49 +18,25 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit5 -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit5</artifactId>
-            <version>2.25.0</version>
-            <scope>test</scope>
-        </dependency>
-
-
-        <!--using for logging the test steps-->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-selenide</artifactId>
-            <version>2.25.0</version>
-        </dependency>
-
+        <!--using for create webdriver and iterate with web elements-->
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>7.2.1</version>
         </dependency>
-
         <!--using to read file with .properties extension and use in project  -->
         <dependency>
             <groupId>org.aeonbits.owner</groupId>
             <artifactId>owner</artifactId>
             <version>1.0.12</version>
         </dependency>
-
-        <!--using as test runner-->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.2</version>
-            <scope>test</scope>
-        </dependency>
-        <!--    using to connect to appium server and connection between tests and emulator-->
+        <!--using to connect to appium server and connection between tests and emulator-->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>9.1.0</version>
         </dependency>
-        <!--        using for assertions-->
+        <!--using for assertions-->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -111,22 +87,19 @@
             <version>1.5.1</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.12.1</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
+        <!--using to generate cucumber reports-->
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
             <version>5.8.0</version>
         </dependency>
-
-
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
